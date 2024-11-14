@@ -1,0 +1,214 @@
+/* CSS untuk membuat video latar belakang */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Menampilkan video latar belakang */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Video berada di bawah konten */
+    transition: transform 1s ease;
+}
+
+/* Overlay untuk membuat video lebih redup */
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 0; /* Overlay berada di atas video */
+    transition: transform 1s ease;
+}
+
+/* Menyelaraskan konten di tengah layar */
+.content {
+    position: absolute; /* Use absolute positioning */
+   
+    z-index: 1;
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    cursor: pointer;
+}
+
+/* Responsif untuk ukuran teks */
+.content h1 {
+    font-size: 5em;
+    margin: 0;
+    font-weight: 600;
+}
+
+.content p {
+    font-size: 1.5em;
+    font-weight: 400;
+}
+.category-title {
+    font-size: 1.8em; /* Sesuaikan ukuran font */
+    color: #F2E8C6;   /* Sesuaikan warna teks */
+    margin-bottom: 20px; /* Memberi jarak antara judul dan produk */
+    text-align: center; /* Atur posisi teks di tengah */
+    width: 100%; /* Lebar penuh sesuai dengan konten */
+}
+
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 5em;
+    }
+
+    .content p {
+        font-size: 1em;
+    }
+}
+
+/* CSS untuk animasi geser ke kiri */
+.swipe-left {
+    animation: swipeLeft 1s forwards;
+}
+
+@keyframes swipeLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Sidebar Style */
+/* Sidebar Style */
+.sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    z-index: 1; /* Sidebar berada di atas overlay dan video */
+    opacity: 0;
+    visibility: hidden;
+    overflow-y: auto; /* Tambahkan scroll jika konten sidebar terlalu banyak */
+}
+
+.sidebar.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar a {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 1.2em;
+    color: white;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+/* Konten utama */
+/* Konten utama */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    box-sizing: border-box;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: flex-start; /* Ensure content starts from the top */
+    gap: 20px; /* Space between main content and product containers */
+}
+
+.main-content.show {
+    opacity: 1;
+    visibility: visible;
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    box-sizing: border-box;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: flex-start; /* Ensure content starts from the top */
+    gap: 20px; /* Space between main content and product containers */    
+}
+
+
+/* Container Produk */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 0; /* Hilangkan margin atas */
+}
+
+/* Style Produk */
+.product {
+    background-color: #A73121;
+    color: #F2E8C6;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product img {
+    width: 350px; /* Set lebar tampilan */
+    height: 350px; /* Set tinggi tampilan */
+}
+
+
+
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
+}
